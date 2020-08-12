@@ -6,7 +6,7 @@ module.exports = (es, id, baseResponse) => {
     return {
       ...baseResponse,
       statusCode: 400,
-      body: JSON.stringify({ message: 'Path parameter for product ID missing... (/products/delete/{id})' })
+      body: JSON.stringify({ message: 'Path parameter for product ID missing... (/products/{id})' })
     }
   }
   return es.delete({

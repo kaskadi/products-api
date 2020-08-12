@@ -6,7 +6,7 @@ module.exports = (es, id, productData, baseResponse) => {
     return {
       ...baseResponse,
       statusCode: 400,
-      body: JSON.stringify({ message: 'Path parameter for product ID missing... (/products/save/{id})' })
+      body: JSON.stringify({ message: 'Path parameter for product ID missing... (/products/{id})' })
     }
   }
   if (!productData) {
