@@ -3,7 +3,7 @@ service:
 package:
   individually: true
   exclude:
-    - '**/**'
+    - "**/**"
 plugins:
   - serverless-aws-documentation
   - serverless-offline
@@ -36,6 +36,7 @@ provider:
     ES_ENDPOINT: ${env:ES_ENDPOINT}
 functions:
   DeleteProduct: ${file(./lambdas/delete-product/serverless.yml)}
+  GetProduct: ${file(./lambdas/get-product/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
 resources:

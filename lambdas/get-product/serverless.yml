@@ -1,0 +1,16 @@
+handler: lambdas/get-product/get-product.handler
+name: get-product
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/get-product/get-product.js
+    - lambdas/get-product/helpers/**
+events:
+  - http:
+      method: get
+      path: get/{id?}
+      cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer
