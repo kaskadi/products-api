@@ -1,0 +1,16 @@
+handler: lambdas/search-products/search-products.handler
+name: search-products
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/search-products/search-products.js
+    - lambdas/search-products/helpers/**
+events:
+  - http:
+      method: get
+      path: search
+      cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer
