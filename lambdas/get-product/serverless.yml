@@ -9,7 +9,7 @@ package:
 events:
   - http:
       method: get
-      path: '{id?}'
+      path: '{id}'
       cors: true
       authorizer:
         type: COGNITO_USER_POOLS
