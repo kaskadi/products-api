@@ -1,11 +1,6 @@
+const { getBaseResponse, createEsClient } = require('products-api-utils')
+const search = require('./helpers/search.js')
+
 module.exports.handler = async (event) => {
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    },
-    body: JSON.stringify({
-      message: 'Hello World!'
-    })
-  }
+  return await search(createEsClient(), event.queryStringParameters, getBaseResponse())
 }
