@@ -1,5 +1,6 @@
 handler: lambdas/search-products/search-products.handler
 name: search-products
+timeout: 30
 layers:
   - { Ref: ApiLayerLambdaLayer }
 package:
