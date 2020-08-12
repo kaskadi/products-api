@@ -1,0 +1,12 @@
+handler: lambdas/delete-product/delete-product.handler
+name: delete-product
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/delete-product/delete-product.js
+events:
+  - http:
+      method: get
+      path: delete/{id}
+      cors: true
