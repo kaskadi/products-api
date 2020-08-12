@@ -7,6 +7,9 @@ package:
     - lambdas/delete-product/delete-product.js
 events:
   - http:
-      method: get
+      method: delete
       path: delete/{id}
       cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer
