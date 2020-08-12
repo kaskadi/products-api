@@ -24,6 +24,9 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY_SECRET }}
         COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
+        ES_ID: ${{ secrets.ES_ID }}
+        ES_SECRET: ${{ secrets.ES_SECRET }}
+        ES_ENDPOINT: ${{ secrets.ES_ENDPOINT }}
     - name: serverless deploy
       uses: serverless/github-action@master
       with:
@@ -32,3 +35,6 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY_SECRET }}
         COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
+        ES_ID: ${{ secrets.ES_ID }}
+        ES_SECRET: ${{ secrets.ES_SECRET }}
+        ES_ENDPOINT: ${{ secrets.ES_ENDPOINT }}
