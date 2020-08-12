@@ -1,11 +1,6 @@
+const { getBaseResponse, createEsClient, getId } = require('products-api-utils')
+const getEntry = require('./helpers/get-entry.js')
+
 module.exports.handler = async (event) => {
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    },
-    body: JSON.stringify({
-      message: 'Hello World!'
-    })
-  }
+  return await getEntry(createEsClient(), getId(event), getBaseResponse())
 }
