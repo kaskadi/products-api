@@ -1,8 +1,8 @@
 {
-  "name": "hello-world",
+  "name": "delete-product",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "delete-product.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

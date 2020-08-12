@@ -19,3 +19,7 @@ jobs:
       run: npm i
     - name: Test
       run: npm test
+      env:
+        ES_ID: ${{ secrets.ES_ID }}
+        ES_SECRET: ${{ secrets.ES_SECRET }}
+        ES_ENDPOINT: ${{ secrets.ES_ENDPOINT }}

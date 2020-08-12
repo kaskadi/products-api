@@ -1,10 +1,11 @@
 {
-  "name": "layer",
+  "name": "products-api-layer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Layer for products-api",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cp -r products-api-utils node_modules/products-api-utils"
   },
   "keywords": [],
   "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
@@ -12,5 +13,8 @@
     "Holger Will <h.will@klimapartner.de>",
     "Alexis Lemaire <a.lemaire@klimapartner.de>"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "aws-es-client": "^1.0.2"
+  }
 }

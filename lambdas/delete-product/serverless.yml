@@ -1,0 +1,16 @@
+handler: lambdas/delete-product/delete-product.handler
+name: delete-product
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/delete-product/delete-product.js
+    - lambdas/delete-product/helpers/**
+events:
+  - http:
+      method: delete
+      path: '{id}'
+      cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer
