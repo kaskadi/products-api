@@ -1,0 +1,18 @@
+handler: lambdas/products-root-handler/products-root-handler.handler
+name: products-root-handler
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/products-root-handler/products-root-handler.js
+events:
+  - http:
+      method:
+        - get
+        - post
+        - delete
+      path: /
+      cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer

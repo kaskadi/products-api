@@ -39,6 +39,7 @@ functions:
   GetProduct: ${file(./lambdas/get-product/serverless.yml)}
   SearchProducts: ${file(./lambdas/search-products/serverless.yml)}
   SaveProduct: ${file(./lambdas/save-product/serverless.yml)}
+  ProductsRootHandler: ${file(./lambdas/products-root-handler/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
 resources:
