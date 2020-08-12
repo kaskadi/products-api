@@ -8,7 +8,7 @@ package:
 events:
   - http:
       method: delete
-      path: delete/{id}
+      path: delete/{id?}
       cors: true
       authorizer:
         type: COGNITO_USER_POOLS
