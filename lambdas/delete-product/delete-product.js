@@ -1,9 +1,8 @@
 const { getBaseResponse, createEsClient } = require('products-api-utils')
-const es = createEsClient()
 const deleteEntry = require('./helpers/delete-entry.js')
 
 module.exports.handler = async (event) => {
-  const id = event.pathParameters.id.replace(/%20/g, ' ')
-  const baseResponse = getBaseResponse()
-  return await deleteEntry(es, id, baseResponse)
+  let id = event.pathParameters ? event.pathParameters.id : undefined
+  id = id && id.trim().length > 0 ? id.trim() : undefined
+  return await deleteEntry(createEsClient(), id, getBaseResponse())
 }
