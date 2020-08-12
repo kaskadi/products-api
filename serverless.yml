@@ -38,6 +38,7 @@ functions:
   DeleteProduct: ${file(./lambdas/delete-product/serverless.yml)}
   GetProduct: ${file(./lambdas/get-product/serverless.yml)}
   SearchProducts: ${file(./lambdas/search-products/serverless.yml)}
+  SaveProduct: ${file(./lambdas/save-product/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
 resources:

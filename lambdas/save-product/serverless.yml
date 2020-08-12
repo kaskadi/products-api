@@ -1,0 +1,16 @@
+handler: lambdas/save-product/save-product.handler
+name: save-product
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/save-product/save-product.js
+    - lambdas/save-product/helpers/**
+events:
+  - http:
+      method: post
+      path: save/{id?}
+      cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer
