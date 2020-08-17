@@ -1,5 +1,4 @@
-const processRes = require('./process-response.js')
-const processErr = require('./process-error.js')
+const { processRes, processErr } = require('products-api-utils')
 
 module.exports = (es, { p, s, q }, baseResponse) => {
   if (!q) {
@@ -20,5 +19,8 @@ module.exports = (es, { p, s, q }, baseResponse) => {
         }
       }
     }
-  }).then(processRes(baseResponse)).catch(processErr(baseResponse))
+  })
+    .then(res => res.body)
+    .then(processRes(baseResponse))
+    .catch(processErr(baseResponse))
 }

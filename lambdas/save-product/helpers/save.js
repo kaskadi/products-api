@@ -1,5 +1,4 @@
-const processRes = require('./process-response.js')
-const processErr = require('./process-error.js')
+const { processRes, processErr } = require('products-api-utils')
 
 module.exports = (es, id, productData, baseResponse) => {
   if (!productData) {
@@ -15,6 +14,9 @@ module.exports = (es, id, productData, baseResponse) => {
   }
   return es.exists(baseParams)
     .then(res => res.statusCode !== 404 ? es.update({ ...baseParams, body: { doc: productData } }) : es.index({ ...baseParams, body: productData }))
+    .then(res => {
+      return { message: `Product with ID ${res.body._id} successfully saved!` }
+    })
     .then(processRes(baseResponse))
     .catch(processErr(baseResponse))
 }
