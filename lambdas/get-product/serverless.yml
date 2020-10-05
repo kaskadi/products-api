@@ -14,3 +14,5 @@ events:
       authorizer:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
+      kaskadi-docs:
+        description: This endpoint allows client to retrieve data of a specific product via its ID.
