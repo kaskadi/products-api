@@ -13,6 +13,8 @@ events:
       authorizer:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
+      kaskadi-docs:
+        description: This endpoint is a fallback for when client forgets to provide an ID for product data retrieval.
   - http:
       method: post
       path: /
@@ -20,6 +22,8 @@ events:
       authorizer:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
+      kaskadi-docs:
+        description: This endpoint is a fallback for when client forgets to provide an ID for product data update.
   - http:
       method: delete
       path: /
@@ -27,3 +31,5 @@ events:
       authorizer:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
+      kaskadi-docs:
+        description: This endpoint is a fallback for when client forgets to provide an ID for product deletion.
