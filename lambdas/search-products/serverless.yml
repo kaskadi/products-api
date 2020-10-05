@@ -15,3 +15,14 @@ events:
       authorizer:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
+      kaskadi-docs:
+        description: This endpoint allows client to perform a product search via a query. Results are paginated.
+        queryStringParameters:
+          - key: p
+            description: Request a specific page of the search results.
+            default: 0
+          - key: s
+            description: Amount of search results returned per page.
+            default: 10
+          - key: q
+            description: Query used to perform the product search. This follows [E]lasticSearch query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
