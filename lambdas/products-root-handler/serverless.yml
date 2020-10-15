@@ -15,6 +15,14 @@ events:
         authorizerId: !Ref CognitoAuthorizer
       kaskadi-docs:
         description: This endpoint is a fallback for when client forgets to provide an ID for product data retrieval.
+        examples:
+          - request: {}
+            response:
+              statusCode: 400
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Path parameter for product ID missing... (/products/{id})
   - http:
       method: post
       path: /
@@ -24,6 +32,14 @@ events:
         authorizerId: !Ref CognitoAuthorizer
       kaskadi-docs:
         description: This endpoint is a fallback for when client forgets to provide an ID for product data update.
+        examples:
+          - request: {}
+            response:
+              statusCode: 400
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Path parameter for product ID missing... (/products/{id})
   - http:
       method: delete
       path: /
@@ -33,3 +49,11 @@ events:
         authorizerId: !Ref CognitoAuthorizer
       kaskadi-docs:
         description: This endpoint is a fallback for when client forgets to provide an ID for product deletion.
+        examples:
+          - request: {}
+            response:
+              statusCode: 400
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Path parameter for product ID missing... (/products/{id})

@@ -25,4 +25,25 @@ events:
             description: Amount of search results returned per page.
             default: 10
           - key: q
-            description: Query used to perform the product search. This follows [E]lasticSearch query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
+            description: Query used to perform the product search. This follows [ElasticSearch query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
+        examples:
+          - request:
+              queryStringParameters:
+                p: 1
+                s: 50
+                q: '*'
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body: 'In here will be an array (`Object[]`) which reflects the 50th to 100th products found (`p=1&s=50`) while searching for all products (`q=*`).'
+          - request:
+              queryStringParameters:
+                p: 1
+                s: 50
+            response:
+              statusCode: 400
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Query string parameter q is missing... Please provide a valid query for your search.
