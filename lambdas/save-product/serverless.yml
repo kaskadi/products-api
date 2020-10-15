@@ -21,3 +21,26 @@ events:
             description: A data field to write in the database for the given product
           - key: example-field-N
             description: A data field to write in the database for the given product
+        examples:
+          - request:
+              pathParameters:
+                id: product_id
+              body:
+                product-data-1: some product data
+                product-data-2: another product data field
+                product-data-N: the last field of data for this product
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Product with ID product_id successfully saved!
+          - request:
+              pathParameters:
+                id: product_id
+            response:
+              statusCode: 400
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: 'Request body missing: no product data to save...'
