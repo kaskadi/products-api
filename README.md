@@ -25,23 +25,31 @@
 <!-- automatically generated documentation will be placed in here -->
 # API endpoints
 
+The origin and root path for this API is: `https://api.klimapartner.net/products`
+
 The following endpoints are defined in this API:
-- [/{id}](#/{id})
-- [/{id}](#/{id})
+- [/](#/)
 - [/search](#/search)
 - [/{id}](#/{id})
-- [/](#/)
 
-## `/{id}` (target lambda → [delete-product](#delete-product)) <a name="/{id}"></a>
+## `/` <a name="/"></a>
 
 Supported methods:
-- [DELETE](#DELETE)
+- [GET](#/-GET)
+- [POST](#/-POST)
+- [DELETE](#/-DELETE)
 
-### `DELETE`
+### `GET` (target lambda → [products-root-handler](#products-root-handler)) <a name="/-GET"></a>
 
 **Description:**
 
-This endpoint allows client to delete a specific product via its ID.
+This endpoint is a fallback for when client forgets to provide an ID for product data retrieval.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
 
 **Query string parameters:**
 
@@ -51,22 +59,47 @@ No query string parameters found for this method.
 
 No body found for this method.
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-DELETE /{id}
+GET https://api.klimapartner.net/products/
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
 ```
 
-## `/{id}` (target lambda → [get-product](#get-product)) <a name="/{id}"></a>
+_Response:_
 
-Supported methods:
-- [GET](#GET)
+```HTTP
+Status code:
+  400
 
-### `GET`
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Path parameter for product ID missing... (/products/{id})"
+  }
+```
+</details>
+
+### `POST` (target lambda → [products-root-handler](#products-root-handler)) <a name="/-POST"></a>
 
 **Description:**
 
-This endpoint allows client to retrieve data of a specific product via its ID.
+This endpoint is a fallback for when client forgets to provide an ID for product data update.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
 
 **Query string parameters:**
 
@@ -76,51 +109,347 @@ No query string parameters found for this method.
 
 No body found for this method.
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-GET /{id}
+POST https://api.klimapartner.net/products/
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
 ```
 
-## `/search` (target lambda → [search-products](#search-products)) <a name="/search"></a>
+_Response:_
+
+```HTTP
+Status code:
+  400
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Path parameter for product ID missing... (/products/{id})"
+  }
+```
+</details>
+
+### `DELETE` (target lambda → [products-root-handler](#products-root-handler)) <a name="/-DELETE"></a>
+
+**Description:**
+
+This endpoint is a fallback for when client forgets to provide an ID for product deletion.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
+
+**Query string parameters:**
+
+No query string parameters found for this method.
+
+**Request body:**
+
+No body found for this method.
+
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
+
+```HTTP
+DELETE https://api.klimapartner.net/products/
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  400
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Path parameter for product ID missing... (/products/{id})"
+  }
+```
+</details>
+
+## `/search` <a name="/search"></a>
 
 Supported methods:
-- [GET](#GET)
+- [GET](#search-GET)
 
-### `GET`
+### `GET` (target lambda → [search-products](#search-products)) <a name="search-GET"></a>
 
 **Description:**
 
 This endpoint allows client to perform a product search via a query. Results are paginated.
 
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
+
 **Query string parameters:**
 
-| Key | Default | Description                                                                                                                                                                                                         |
-| :-: | :-----: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `p` |         | Request a specific page of the search results.                                                                                                                                                                      |
-| `s` |   `10`  | Amount of search results returned per page.                                                                                                                                                                         |
-| `q` |         | Query used to perform the product search. This follows [E]lasticSearch query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax). |
+| Key | Default | Description                                                                                                                                                                                                        |
+| :-: | :-----: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `p` |         | Request a specific page of the search results.                                                                                                                                                                     |
+| `s` |   `10`  | Amount of search results returned per page.                                                                                                                                                                        |
+| `q` |         | Query used to perform the product search. This follows [ElasticSearch query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax). |
 
 **Request body:**
 
 No body found for this method.
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-GET /search?p=p_value&s=s_value&q=q_value
+GET https://api.klimapartner.net/products/search?p=1&s=50&q=*
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
 ```
 
-## `/{id}` (target lambda → [save-product](#save-product)) <a name="/{id}"></a>
+_Response:_
+
+```HTTP
+Status code:
+  200
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  In here will be an array (`Object[]`) which reflects the 50th to 100th products found (`p=1&s=50`) while searching for all products (`q=*`).
+```
+</details>
+
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+GET https://api.klimapartner.net/products/search?p=1&s=50
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  400
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Query string parameter q is missing... Please provide a valid query for your search."
+  }
+```
+</details>
+
+## `/{id}` <a name="/{id}"></a>
 
 Supported methods:
-- [POST](#POST)
+- [DELETE](#{id}-DELETE)
+- [GET](#{id}-GET)
+- [POST](#{id}-POST)
 
-### `POST`
+### `DELETE` (target lambda → [delete-product](#delete-product)) <a name="{id}-DELETE"></a>
+
+**Description:**
+
+This endpoint allows client to delete a specific product via its ID.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
+
+**Query string parameters:**
+
+No query string parameters found for this method.
+
+**Request body:**
+
+No body found for this method.
+
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
+
+```HTTP
+DELETE https://api.klimapartner.net/products/valid_id
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  200
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Product with ID valid_id successfully deleted!"
+  }
+```
+</details>
+
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+DELETE https://api.klimapartner.net/products/non_existant_id
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  404
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Product not found..."
+  }
+```
+</details>
+
+### `GET` (target lambda → [get-product](#get-product)) <a name="{id}-GET"></a>
+
+**Description:**
+
+This endpoint allows client to retrieve data of a specific product via its ID.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
+
+**Query string parameters:**
+
+No query string parameters found for this method.
+
+**Request body:**
+
+No body found for this method.
+
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
+
+```HTTP
+GET https://api.klimapartner.net/products/valid_id
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  200
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "product-data-1": "some product data",
+    "product-data-2": "another product data field",
+    "product-data-N": "the last field of data for this product"
+  }
+```
+</details>
+
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+GET https://api.klimapartner.net/products/non_existant_id
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  404
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Product not found..."
+  }
+```
+</details>
+
+### `POST` (target lambda → [save-product](#save-product)) <a name="{id}-POST"></a>
 
 **Description:**
 
 This endpoint allows client to update data of a specific product via its ID. The request body should contain the new product data.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
 
 **Query string parameters:**
 
@@ -133,83 +462,70 @@ No query string parameters found for this method.
 | `example-field-1` |         | A data field to write in the database for the given product |
 | `example-field-N` |         | A data field to write in the database for the given product |
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-POST /{id}
+POST https://api.klimapartner.net/products/product_id
 
-{
-  "example-field-1": "example-field-1_value",
-  "example-field-N": "example-field-N_value"
-}
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+
+Body:
+  {
+    "product-data-1": "some product data",
+    "product-data-2": "another product data field",
+    "product-data-N": "the last field of data for this product"
+  }
 ```
 
-## `/` (target lambda → [products-root-handler](#products-root-handler)) <a name="/"></a>
-
-Supported methods:
-- [GET](#GET)
-- [POST](#POST)
-- [DELETE](#DELETE)
-
-### `GET`
-
-**Description:**
-
-This endpoint is a fallback for when client forgets to provide an ID for product data retrieval.
-
-**Query string parameters:**
-
-No query string parameters found for this method.
-
-**Request body:**
-
-No body found for this method.
-
-_Example request:_
+_Response:_
 
 ```HTTP
-GET /
+Status code:
+  200
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Product with ID product_id successfully saved!"
+  }
 ```
+</details>
 
-### `POST`
+<details>
+<summary>Example #2</summary>
 
-**Description:**
-
-This endpoint is a fallback for when client forgets to provide an ID for product data update.
-
-**Query string parameters:**
-
-No query string parameters found for this method.
-
-**Request body:**
-
-No body found for this method.
-
-_Example request:_
+_Request:_
 
 ```HTTP
-POST /
+POST https://api.klimapartner.net/products/product_id
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
 ```
 
-### `DELETE`
-
-**Description:**
-
-This endpoint is a fallback for when client forgets to provide an ID for product deletion.
-
-**Query string parameters:**
-
-No query string parameters found for this method.
-
-**Request body:**
-
-No body found for this method.
-
-_Example request:_
+_Response:_
 
 ```HTTP
-DELETE /
+Status code:
+  400
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Request body missing: no product data to save..."
+  }
 ```
+</details>
 
 # API resources
 
@@ -271,7 +587,7 @@ Layer for products-api
 
 ### Dependencies
 
-- `aws-es-client`, version: `^1.0.2` ([see on NPM](https://www.npmjs.com/package/aws-es-client))
+- `aws-es-client`, version: `1.0.2` ([see on NPM](https://www.npmjs.com/package/aws-es-client))
 - `products-api-utils` (local utility)
 
 See [configuration file](./serverless.yml) for more details.
