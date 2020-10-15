@@ -242,7 +242,7 @@ Headers:
   Access-Control-Allow-Origin: *
 
 Body:
-  In here will be an array (`Object[]`) which reflects the 50th to 100th products found (`p=1&s=50`) while searching for all products (`q=*`).
+  In here will be an array (Object[]) which reflects the 50th to 100th products found (p=1&s=50) while searching for all products (q=*).
 ```
 </details>
 
