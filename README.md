@@ -542,41 +542,41 @@ The following layers are used in this API:
 
 ## delete-product <a name="delete-product"></a>
 
-|      Name      | Sources                | Timeout |                        Handler                        | Layers                                                      |
-| :------------: | :--------------------- | :-----: | :---------------------------------------------------: | :---------------------------------------------------------- |
-| delete-product | <ul><li>HTTP</li></ul> | default | [handler](./lambdas/delete-product/delete-product.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
+|      Name      | Sources                         | Timeout |                        Handler                        | Layers                                                      |
+| :------------: | :------------------------------ | :-----: | :---------------------------------------------------: | :---------------------------------------------------------- |
+| delete-product | <ul><li>HTTP (DELETE)</li></ul> | default | [handler](./lambdas/delete-product/delete-product.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## get-product <a name="get-product"></a>
 
-|     Name    | Sources                | Timeout |                     Handler                     | Layers                                                      |
-| :---------: | :--------------------- | :-----: | :---------------------------------------------: | :---------------------------------------------------------- |
-| get-product | <ul><li>HTTP</li></ul> | default | [handler](./lambdas/get-product/get-product.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
+|     Name    | Sources                      | Timeout |                     Handler                     | Layers                                                      |
+| :---------: | :--------------------------- | :-----: | :---------------------------------------------: | :---------------------------------------------------------- |
+| get-product | <ul><li>HTTP (GET)</li></ul> | default | [handler](./lambdas/get-product/get-product.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## search-products <a name="search-products"></a>
 
-|       Name      | Sources                | Timeout |                         Handler                         | Layers                                                      |
-| :-------------: | :--------------------- | :-----: | :-----------------------------------------------------: | :---------------------------------------------------------- |
-| search-products | <ul><li>HTTP</li></ul> |   30s   | [handler](./lambdas/search-products/search-products.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
+|       Name      | Sources                      | Timeout |                         Handler                         | Layers                                                      |
+| :-------------: | :--------------------------- | :-----: | :-----------------------------------------------------: | :---------------------------------------------------------- |
+| search-products | <ul><li>HTTP (GET)</li></ul> |   30s   | [handler](./lambdas/search-products/search-products.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## save-product <a name="save-product"></a>
 
-|     Name     | Sources                | Timeout |                      Handler                      | Layers                                                      |
-| :----------: | :--------------------- | :-----: | :-----------------------------------------------: | :---------------------------------------------------------- |
-| save-product | <ul><li>HTTP</li></ul> | default | [handler](./lambdas/save-product/save-product.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
+|     Name     | Sources                       | Timeout |                      Handler                      | Layers                                                      |
+| :----------: | :---------------------------- | :-----: | :-----------------------------------------------: | :---------------------------------------------------------- |
+| save-product | <ul><li>HTTP (POST)</li></ul> | default | [handler](./lambdas/save-product/save-product.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## products-root-handler <a name="products-root-handler"></a>
 
-|          Name         | Sources                                          | Timeout |                               Handler                               | Layers                                                      |
-| :-------------------: | :----------------------------------------------- | :-----: | :-----------------------------------------------------------------: | :---------------------------------------------------------- |
-| products-root-handler | <ul><li>HTTP</li><li>HTTP</li><li>HTTP</li></ul> | default | [handler](./lambdas/products-root-handler/products-root-handler.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
+|          Name         | Sources                                                                | Timeout |                               Handler                               | Layers                                                      |
+| :-------------------: | :--------------------------------------------------------------------- | :-----: | :-----------------------------------------------------------------: | :---------------------------------------------------------- |
+| products-root-handler | <ul><li>HTTP (GET)</li><li>HTTP (POST)</li><li>HTTP (DELETE)</li></ul> | default | [handler](./lambdas/products-root-handler/products-root-handler.js) | <ul><li>[products-api-layer](#products-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
